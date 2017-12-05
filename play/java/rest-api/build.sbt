@@ -12,7 +12,8 @@ libraryDependencies += guice
 libraryDependencies ++= Seq(
   Cinnamon.library.cinnamonCHMetrics,
   Cinnamon.library.cinnamonAkka,
-  Cinnamon.library.cinnamonOpsClarity
+  Cinnamon.library.cinnamonOpsClarity,
+  Cinnamon.library.cinnamonAkkaHttp
 )
 
 dockerRepository := Some("265690947920.dkr.ecr.us-west-1.amazonaws.com")
