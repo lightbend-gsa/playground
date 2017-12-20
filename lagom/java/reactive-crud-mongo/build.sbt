@@ -30,16 +30,21 @@ lazy val `employee-api` = (project in file("employee-api"))
 lazy val `employee-impl` = (project in file("employee-impl"))
   .enablePlugins(LagomJava)
   .enablePlugins(SbtReactiveAppPlugin)
-  .enablePlugins(Cinnamon)
+  //.enablePlugins(Cinnamon)
   .settings(common: _*)
   .settings(
+    name := "reactive-crud-mongo",
     libraryDependencies ++= Seq(
       lagomJavadslPersistenceCassandra,
       lagomJavadslKafkaBroker,
       lagomJavadslTestKit,
       lombok
-    )
+    ),
+    dockerRepository := Some("265690947920.dkr.ecr.us-west-1.amazonaws.com"),
+    packageName in Docker := packageName.value,
+    dockerUpdateLatest := true
   )
+  .settings(libraryDependencies += "com.typesafe" % "config" % "1.3.1")
   .settings(lagomForkedTestSettings: _*)
   .dependsOn(`employee-api`)
 

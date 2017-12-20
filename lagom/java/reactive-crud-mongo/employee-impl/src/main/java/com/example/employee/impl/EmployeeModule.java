@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.example.employee.impl;
 
@@ -10,6 +10,8 @@ import com.google.inject.Singleton;
 import com.lightbend.lagom.javadsl.server.ServiceGuiceSupport;
 import com.mongodb.reactivestreams.client.MongoClients;
 import com.mongodb.reactivestreams.client.MongoCollection;
+
+import com.typesafe.config.*;
 
 /**
  * The module that binds the EmployeeService so that it can be served.
@@ -23,9 +25,12 @@ public class EmployeeModule extends AbstractModule implements ServiceGuiceSuppor
       bind(SimpleCrudTemplate.class).to(EmployeeTemplate.class);
   }
 
+  Config conf = ConfigFactory.load();
+  String mongoHost = conf.getString("mongo.host");
+
     @Provides
     @Singleton
     public MongoCollection mongoCollection(){
-        return MongoClients.create().getDatabase("salaries").getCollection("employee_chicago_salaries");
+        return MongoClients.create("mongodb://" + mongoHost).getDatabase("salaries").getCollection("employee_chicago_salaries");
     }
 }
