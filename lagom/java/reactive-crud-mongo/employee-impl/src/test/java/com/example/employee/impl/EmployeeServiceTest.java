@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.example.employee.impl;
 
@@ -10,10 +10,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.example.person.api.GreetingMessage;
+//import com.example.person.api.GreetingMessage;
 import com.example.employee.api.EmployeeService;
 
-public class PersonServiceTest {
+public class EmployeeServiceTest {
 
   @Test
   public void shouldStorePersonalizedGreeting() throws Exception {
