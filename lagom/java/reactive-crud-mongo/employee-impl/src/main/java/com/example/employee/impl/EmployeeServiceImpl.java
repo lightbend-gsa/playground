@@ -11,11 +11,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.List;
 
 /**
  * Implementation of the EmployeeService.
  */
+@Singleton
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final SimpleCrudTemplate crudTemplate;
